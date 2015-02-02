@@ -25,8 +25,6 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
-
   protected
 
   def post_params
