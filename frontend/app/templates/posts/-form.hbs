@@ -1,0 +1,8 @@
+<ul>
+  <form {{action "createPost" on="submit"}}>
+    <li>{{input placeholder="Title" value=newPost.title}}</li>
+    <li>{{input placeholder="Description" value=newPost.description}}</li>
+    <li>{{input placeholder="URL" value=newPost.url}}</li>
+    <li><button {{action "createPost" newPost}}>submit</button></li>
+  </form>
+</ul>
