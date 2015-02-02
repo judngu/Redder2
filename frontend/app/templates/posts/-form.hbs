@@ -1,8 +1,10 @@
 <ul>
-  <form {{action "createPost" on="submit"}}>
-    <li>{{input placeholder="Title" value=newPost.title}}</li>
-    <li>{{input placeholder="Description" value=newPost.description}}</li>
-    <li>{{input placeholder="URL" value=newPost.url}}</li>
-    <li><button {{action "createPost" newPost}}>submit</button></li>
+  <form {{action "save" on="submit"}}>
+    <h2>{{errorMessage}}</h2>
+    <li>{{input placeholder="Title" value=model.title}}</li>
+    <li>{{input placeholder="Description" value=model.description}}</li>
+    <li>{{input placeholder="URL" value=model.url}}</li>
+    <li><input type="submit" value="Save" class="button"/>
+<button {{action "cancel"}}>Cancel</button></li>
   </form>
 </ul>

@@ -11,20 +11,23 @@ export default Ember.Controller.extend({
       !Ember.isEmpty(this.get('model.url'));
     }
   ),
+
   actions: {
     save: function() {
       if (this.get('isValid')) {
         var _this = this;
-        this.get('model').save().then(function(friend) {
-          _this.transitionToRoute('posts.show', friend);
+        this.get('model').save().then(function(post) {
+          _this.transitionToRoute('posts.show', post);
         });
       } else {
         this.set('errorMessage', 'You have to fill all the fields');
       }
+
       return false;
     },
     cancel: function() {
-      this.transitionToRoute('posts.show', this.get('model'));
+      this.transitionToRoute('posts');
+
       return false;
     }
   }
