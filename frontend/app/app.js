@@ -13,4 +13,10 @@ var App = Ember.Application.extend({
 
 loadInitializers(App, config.modulePrefix);
 
+// export default App;
 export default App;
+  Ember.View.extend({ //or Ember.Component.extend
+  didInsertElement: function() {
+    this.$().foundation(); //or Ember.$(document).foundation();
+  }
+});
