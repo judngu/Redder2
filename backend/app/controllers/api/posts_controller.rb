@@ -8,13 +8,24 @@ class Api::PostsController < ApplicationController
     if @post.save
       render json: @post
     else
-      render json: { errors: @post }
+      render json: { errors: @post.errors }
     end
   end
 
   def show
     render json: Post.find(params[:id])
   end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      render json: @post
+    else
+      render json: { errors: @post.errors }
+    end
+  end
+
+
 
   protected
 
