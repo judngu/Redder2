@@ -2,12 +2,28 @@ require 'rake'
 
 task :run do
   pids = [
-    spawn('cd backend && rails s'),
-    spawn('cd frontend && ./node_modules/.bin/ember server --proxy http://localhost:3000'),
+    spawn("cd backend && EMBER_PORT=4900 rails s -p 3900"),
+    spawn("cd frontend && ./node_modules/.bin/ember server --port=4900 --proxy-port=3900"),
   ]
 
-  trap 'INT' do
-    Process.kill 'INT', *pids
+  trap "INT" do
+    Process.kill "INT", *pids
+    exit 1
+  end
+
+  loop do
+    sleep 1
+  end
+end
+
+task :test do
+  pids = [
+    spawn("cd backend && EMBER_PORT=4900 rails s -p 3900 -e test"),
+    spawn("cd frontend && ./node_modules/.bin/ember server --port=4900 --proxy-port=3900"),
+  ]
+
+  trap "INT" do
+    Process.kill "INT", *pids
     exit 1
   end
 
@@ -17,9 +33,10 @@ task :run do
 end
 
 task :deploy do
-  sh 'git checkout production'
-  sh 'git merge master -m "Merging master for deployment"'
-  sh 'cd frontend && ./node_modules/.bin/ember build --environment=production --output-path=../backend/public/ && cd ..'
+  sh 'git checkout rsh-production'
+  sh 'git merge rails-served-html -m "Merging master for deployment"'
+  sh 'rm -rf backend/public/assets'
+  sh 'cd frontend && BROCCOLI_ENV=production broccoli build ../backend/public/assets && cd ..'
 
   unless `git status` =~ /nothing to commit, working directory clean/
     sh 'git add -A'
@@ -28,7 +45,7 @@ task :deploy do
 
   sh 'git subtree push -P backend heroku master'
 
-  release_output = `heroku releases -a rescue-mission-production`.split "\n"
+  release_output = `heroku releases -a rails-html-ember-cli`.split "\n"
   latest_release = release_output[1].match(/v\d+/).to_s
 
   tags = `git tag`
