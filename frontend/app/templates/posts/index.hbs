@@ -1,7 +1,10 @@
+<ul>
 {{#each}}
- {{~#link-to 'posts.show' this}}
-   {{title}}
- {{~/link-to}}
+  <li>{{~#link-to 'posts.show' this}}
+    {{title}}
+  {{~/link-to}}<br>
+  {{description}}</li>
 {{/each}}
+</ul>
 
 
