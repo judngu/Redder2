@@ -1,8 +1,23 @@
-<h2 id="title">Redder</h2>
+<nav class="top-bar topbar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>{{link-to 'Redder' 'application'}}</h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
 
-{{link-to 'Home' 'application'}}
-{{link-to 'About' 'about'}}
-{{link-to 'Posts' 'posts'}}
-{{link-to 'Submit a link' 'posts.new'}}
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active">{{link-to 'Submit a link' 'posts.new'}}</li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li>{{link-to 'About' 'about'}}</li>
+    </ul>
+  </section>
+</nav>
 
 {{outlet}}

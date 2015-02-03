@@ -1,3 +1,38 @@
 @import "settings";
 
 @import "foundation";
+
+.top-bar {
+background: #D88A8A;
+overflow: visible;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+padding: 0 0.9375rem;
+line-height: 2.8125rem;
+background: #D88A8A;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+background-color: #D88A8A;
+background: #D88A8A;
+}
+
+.top-bar-section li.active:not(.has-form) a:not(.button) {
+padding: 0 0.9375rem;
+line-height: 2.8125rem;
+color: #FFFFFF;
+background: #474843;
+}
+
+.top-bar-section li.active:not(.has-form) a:not(.button):hover {
+background: #9D9D93;
+}
+
+a {
+color: #474843;
+text-decoration: none;
+line-height: inherit;}
+  a:hover, a:focus {
+    color: #474843;
+}

@@ -1,6 +1,8 @@
-<h4>{{model.title}}</h4>
-<p>{{model.description}}</p>
-<p>{{model.url}}</p>
+<div class="panel">
+  <h4>{{model.title}}({{model.url}})</h4>
+  <p>{{model.description}}</p>
+  <p>{{link-to "edit" "posts.edit" model}}
+</div>
 
 <h5>Comments:</h5>
 <ul>

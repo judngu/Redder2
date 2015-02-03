@@ -1,10 +1,12 @@
-<ul>
-  <form {{action "save" on="submit"}}>
-    <h2>{{errorMessage}}</h2>
-    <li>{{input placeholder="Title" value=model.title}}</li>
-    <li>{{input placeholder="Description" value=model.description}}</li>
-    <li>{{input placeholder="URL" value=model.url}}</li>
-    <li><input type="submit" value="Save" class="button"/>
-<button {{action "cancel"}}>Cancel</button></li>
-  </form>
-</ul>
+<div class="row">
+  <ul class="no-bullet">
+    <form {{action "save" on="submit"}}>
+      <h2>{{errorMessage}}</h2>
+      <li>Title: {{input value=model.title}}</li>
+      <li>Description: {{input value=model.description}}</li>
+      <li>URL: {{input value=model.url}}</li>
+      <li><input type="submit" value="Save" class="button tiny secondary"/>
+  <button class="tiny secondary"{{action "cancel"}}>Cancel</button></li>
+    </form>
+  </ul>
+</div>

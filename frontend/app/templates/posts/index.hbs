@@ -1,10 +1,14 @@
-<ul>
-{{#each}}
-  <li>{{~#link-to 'posts.show' this}}
-    {{title}}
-  {{~/link-to}}<br>
-  {{description}}</li>
-{{/each}}
-</ul>
-
+<div class="row">
+  <ul class="no-bullet">
+  {{#each}}
+    <li class="panel">{{~#link-to 'posts.show' this}}
+      <b>{{title}}<b>
+    {{~/link-to}}<br>
+    {{~#link-to 'posts.show' this}}
+      {{description}}
+    {{~/link-to}}<br>
+    comments ({{comments.length}})</li>
+  {{/each}}
+  </ul>
+</div>
 
