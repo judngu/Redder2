@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/judngu/Redder2.svg?label=ready&title=Ready)](http://waffle.io/judngu/Redder2)
 # Redder
 
 Redder is a Reddit clone done with a Ember CLI frontend and a Rails API backend.
