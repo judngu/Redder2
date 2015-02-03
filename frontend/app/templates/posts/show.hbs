@@ -3,9 +3,10 @@
   <p>{{model.description}}</p>
   <p>{{link-to "edit" "posts.edit" model}}
 </div>
-
+{{link-to "comment" "comments.new"}}
 <h5>Comments:</h5>
 <ul>
+  {{outlet}}
   {{#each comments}}
     <li>{{body}}</li>
   {{/each}}
