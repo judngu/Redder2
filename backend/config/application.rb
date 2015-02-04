@@ -16,6 +16,13 @@ Bundler.require(*Rails.groups)
 
 module Redder
   class Application < Rails::Application
+    # Send all requests to index that are not to the api
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+      index_file = Rails.root.join('public', 'index.html').to_s
+      send_file(/.*/, index_file, if: ->(rack_env) {
+        rack_env['PATH_INFO'] !~ /^\/api.*$/
+      })
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
