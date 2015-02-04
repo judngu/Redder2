@@ -28,5 +28,14 @@ task :deploy do
 
   sh 'git subtree push -P backend heroku master'
 
+  release_output = `heroku releases -a redder `.split "\n"
+  latest_release = release_output[1].match(/v\d+/).to_s
+
+  tags = `git tag`
+
+  unless tags.include? latest_release
+    sh "git tag #{latest_release}"
+  end
+
   sh 'git checkout -'
 end
