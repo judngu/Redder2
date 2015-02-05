@@ -4,10 +4,20 @@
   <p>{{link-to "edit" "posts.edit" model}}
 </div>
 
+{{hello}}
+
+<ul class="no-bullet">
+  <form {{action "save" on="submit"}}>
+    <h2>{{errorMessage}}</h2>
+    <li>Comment: {{input value=newComment.body}}</li>
+    <li><input type="submit" value="Save" class="button tiny secondary"/>
+  </form>
+<ul>
+
 <h5>Comments:</h5>
 <ul>
   {{outlet}}
-  {{#each comments}}
+  {{#each model.comments}}
     <li>{{body}}</li>
   {{/each}}
 </ul>

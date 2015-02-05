@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 gem 'rails-api'
 gem 'rack-rewrite'
 gem 'pg'
+gem 'pry-rails'
 
 group :production do
   gem 'rails_12factor'
