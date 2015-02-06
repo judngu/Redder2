@@ -24,6 +24,9 @@ bower install
 ```
 Rake Run 
 ```
+##See it live on Heroku
+[http://redder.herokuapp.com](http://redder.herokuapp.com)
+
 ## Contributing
 
 1. Fork it!
